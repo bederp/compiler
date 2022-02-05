@@ -7,13 +7,8 @@ fun main(args: Array<String>) {
     parser.use {
         writer.use {
             while (parser.hasNext()) {
-                val line = parser.next()
-                println(line)
-                writer.emit(line)
+                writer.emit(parser.next())
             }
         }
     }
 }
-
-
-

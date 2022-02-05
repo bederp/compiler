@@ -7,7 +7,6 @@ data class AST(val command: CommandType, val arg1: String? = null, val arg2: Str
         else
             "// $line"
     }
-
 }
 
 enum class CommandType {
@@ -15,11 +14,18 @@ enum class CommandType {
 }
 
 enum class Command(val command: String) {
-    ADD("add"), SUB("sub"), NEG("neg"), EQ("eq"), GT("gt"), LT("lt"), AND("and"), OR("or"), NOT("not"),
-    PUSH("push"), POP("pop");
-
+    ADD("add"), SUB("sub"), NEG("neg"), EQ("eq"), GT("gt"),
+    LT("lt"), AND("and"), OR("or"), NOT("not"), PUSH("push"),
+    POP("pop");
 }
 
-enum class MemorySegment(){
-    LCL, ARG, THIS, THAT, CONSTANT, STATIC, TEMP, POINTER
+enum class MemorySegment(val segment: String) {
+    SP("sp"), LCL("local"), ARG("argument"),
+    THIS("this"), THAT("that"),
+    CONSTANT("constant"), STATIC("static"),
+    TEMP("temp"), POINTER("pointer");
+
+    companion object {
+        fun forName(name: String) = values().find{ it.segment == name }
+    }
 }

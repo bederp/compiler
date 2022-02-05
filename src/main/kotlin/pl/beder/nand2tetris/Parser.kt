@@ -76,5 +76,3 @@ class Parser(filename: String) : Iterator<AST>, AutoCloseable, Closeable {
         return this?.isBlank() == true
     }
 }
-
-
